@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="O'zbekistonning eng yaxshi saytlari ro'yxati — qidiring, filtrlang va kashf eting. IT, ta'lim, yangiliklar va boshqa kategoriyalar.">
+    <meta name="keywords" content="O'zbekiston saytlari, qidiruv, IT saytlar, ta'lim saytlar, yangiliklar">
+    <meta name="author" content="TopUzbekSites">
+    <meta name="theme-color" content="#050510">
+    <title>Saytlar — TopUzbekSites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="image/favlogo.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <div class="logo-icon"><img src="image/logo.png" alt="Logo" class="logo-img"></div>
+                <span>TopUzbekSites</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="saytlar.html" class="active">Saytlar</a></li>
+                <li><a href="aloqa.html">Aloqa</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ PAGE HEADER ============ -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="section-title">Saytlar Katalogi</h1>
+            <p class="section-subtitle">
+                O'zbekistonning eng yaxshi va foydali web saytlarini qidiring va kashf eting
+            </p>
+
+            <!-- Search -->
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="searchInput" placeholder="Sayt nomini qidiring..."
+                    autocomplete="off">
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="filter-pills" id="filterPills">
+                <button class="filter-pill active" data-category="all">Barchasi</button>
+                <button class="filter-pill" data-category="IT">IT</button>
+                <button class="filter-pill" data-category="Ta'lim">Ta'lim</button>
+                <button class="filter-pill" data-category="Yangiliklar">Yangiliklar</button>
+                <button class="filter-pill" data-category="E-commerce">E-commerce</button>
+                <button class="filter-pill" data-category="Davlat">Davlat</button>
+                <button class="filter-pill" data-category="Ko'ngilochar">Ko'ngilochar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ SITES GRID ============ -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="sites-grid" id="sitesGrid">
+                <!-- Saytlar JavaScript orqali render qilinadi -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="logo-icon"><img src="image/logo.png" alt="Logo" class="logo-img"></div>
+                        TopUzbekSites
+                    </div>
+                    <p class="footer-desc">
+                        O'zbekistonning eng yaxshi veb-saytlarini topish uchun platforma.
+                    </p>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#" class="social-link" aria-label="Telegram">📨</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="YouTube">🎬</a>
+                        <a href="#" class="social-link" aria-label="GitHub">💻</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Sahifalar</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Bosh sahifa</a>
+                        <a href="saytlar.html">Saytlar</a>
+                        <a href="aloqa.html">Aloqa</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Kategoriyalar</h4>
+                    <div class="footer-links">
+                        <a href="saytlar.html">IT va Texnologiya</a>
+                        <a href="saytlar.html">Ta'lim</a>
+                        <a href="saytlar.html">Yangiliklar</a>
+                        <a href="saytlar.html">E-tijorat</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TopUzbekSites. Barcha huquqlar himoyalangan.</p>
+                <p>O'zbekiston uchun ❤️ bilan yaratildi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

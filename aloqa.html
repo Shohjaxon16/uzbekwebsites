@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TopUzbekSites bilan bog'laning yoki o'z saytingizni katalogga qo'shing. Aloqa formasi.">
+    <meta name="keywords" content="aloqa, sayt qo'shish, TopUzbekSites, bog'lanish">
+    <meta name="author" content="TopUzbekSites">
+    <meta name="theme-color" content="#050510">
+    <title>Aloqa — TopUzbekSites</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="image/favlogo.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <div class="logo-icon"><img src="image/logo.png" alt="Logo" class="logo-img"></div>
+                <span>TopUzbekSites</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Bosh sahifa</a></li>
+                <li><a href="saytlar.html">Saytlar</a></li>
+                <li><a href="aloqa.html" class="active">Aloqa</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ PAGE HEADER ============ -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="section-title">Biz bilan bog'laning va o'z saytingizni qo'shing</h1>
+            <p class="section-subtitle">
+                Savollaringiz bormi yoki saytingizni katalogga qo'shmoqchimisiz? Quyidagi formani to'ldiring!
+            </p>
+        </div>
+    </header>
+
+    <!-- ============ UNIFIED FORM ============ -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container" style="max-width: 680px;">
+
+            <div class="glass-card form-section" id="messageFormSection" style="position: relative;">
+                <h3>📩 Xabar yuborish</h3>
+                <p class="form-desc">
+                    Biz bilan bog'lanish yoki saytingizni qo'shish uchun formani to'ldiring.
+                    Sayt ma'lumotlari ixtiyoriy — faqat bog'lanmoqchi bo'lsangiz ham yuborishingiz mumkin.
+                </p>
+
+                <form id="messageForm" novalidate>
+                    <!-- Shaxsiy ma'lumotlar -->
+                    <div class="form-group">
+                        <input type="text" id="msgName" placeholder=" " required>
+                        <label for="msgName">Ismingiz *</label>
+                        <span class="error-msg">Iltimos, ismingizni kiriting</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="msgEmail" placeholder=" " required>
+                        <label for="msgEmail">Email manzilingiz *</label>
+                        <span class="error-msg">To'g'ri email kiriting</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" id="msgPhone" placeholder=" ">
+                        <label for="msgPhone">Telefon raqam (ixtiyoriy)</label>
+                    </div>
+
+                    <!-- Sayt ma'lumotlari (ixtiyoriy) -->
+                    <div
+                        style="margin: 2rem 0 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <p
+                            style="color: var(--accent-light); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">
+                            🌐 Saytingizni qo'shmoqchimisiz? (ixtiyoriy)
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="msgSiteName" placeholder=" ">
+                        <label for="msgSiteName">Sayt nomi</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="url" id="msgSiteUrl" placeholder=" ">
+                        <label for="msgSiteUrl">Sayt URL (https://...)</label>
+                        <span class="error-msg">To'g'ri URL kiriting</span>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="msgSiteCategory">
+                            <option value="" disabled selected></option>
+                            <option value="IT">IT</option>
+                            <option value="Ta'lim">Ta'lim</option>
+                            <option value="Yangiliklar">Yangiliklar</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Davlat">Davlat</option>
+                            <option value="Ko'ngilochar">Ko'ngilochar</option>
+                        </select>
+                        <label for="msgSiteCategory">Kategoriya</label>
+                    </div>
+
+                    <!-- Xabar -->
+                    <div class="form-group">
+                        <textarea id="msgMessage" placeholder=" "></textarea>
+                        <label for="msgMessage">Xabaringiz (ixtiyoriy)</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        🚀 Yuborish
+                    </button>
+                </form>
+
+                <div class="form-success" id="messageSuccess">
+                    <div class="checkmark">✓</div>
+                    <h4>Muvaffaqiyatli yuborildi!</h4>
+                    <p>Tez orada javob beramiz</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="logo-icon"><img src="image/logo.png" alt="Logo" class="logo-img"></div>
+                        TopUzbekSites
+                    </div>
+                    <p class="footer-desc">
+                        O'zbekistonning eng yaxshi veb-saytlarini topish uchun platforma.
+                    </p>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#" class="social-link" aria-label="Telegram">📨</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="YouTube">🎬</a>
+                        <a href="#" class="social-link" aria-label="GitHub">💻</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Sahifalar</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Bosh sahifa</a>
+                        <a href="saytlar.html">Saytlar</a>
+                        <a href="aloqa.html">Aloqa</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Kategoriyalar</h4>
+                    <div class="footer-links">
+                        <a href="saytlar.html">IT va Texnologiya</a>
+                        <a href="saytlar.html">Ta'lim</a>
+                        <a href="saytlar.html">Yangiliklar</a>
+                        <a href="saytlar.html">E-tijorat</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TopUzbekSites. Barcha huquqlar himoyalangan.</p>
+                <p>O'zbekiston uchun ❤️ bilan yaratildi</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
