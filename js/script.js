@@ -114,6 +114,13 @@ const sitesData = [
         logo: 'https://www.google.com/s2/favicons?domain=bilim.uz&sz=128',
         category: "Ta'lim",
         description: "Ta'lim portali. Oliy ta'lim muassasalari va o'quv dasturlari haqida."
+    },
+    {
+        name: 'TopUzbekSites',
+        url: 'https://peaceful-banoffee-e0d067.netlify.app',
+        logo: 'image/logo.png',
+        category: 'IT',
+        description: "O'zbekistonning eng yaxshi veb-saytlarini topish va kataloglash platformasi."
     }
 ];
 
@@ -404,7 +411,7 @@ function attachClearError(input) {
     });
 }
 
-/* ---- BIRLASHTIRILGAN FORMA — PostgreSQL API bilan ---- */
+/* ---- BIRLASHTIRILGAN FORMA — Netlify Forms bilan ---- */
 const messageForm = document.getElementById('messageForm');
 const messageSuccess = document.getElementById('messageSuccess');
 
