@@ -1311,7 +1311,7 @@ img {
     }
 
     .stats-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
     .about-grid {
