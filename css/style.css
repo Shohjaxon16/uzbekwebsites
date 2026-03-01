@@ -377,8 +377,8 @@ img {
 }
 
 .navbar-brand .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     background: transparent;
     border-radius: var(--radius-sm);
     display: flex;
@@ -720,8 +720,8 @@ img {
 }
 
 .footer-brand .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     background: transparent;
     border-radius: 10px;
     display: flex;
@@ -1041,6 +1041,7 @@ img {
 }
 
 .form-group select {
+    appearance: none;
     cursor: pointer;
 }
 

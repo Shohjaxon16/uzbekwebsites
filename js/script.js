@@ -252,7 +252,8 @@ function animateCounter(el) {
         if (progress < 1) {
             requestAnimationFrame(update);
         } else {
-            el.textContent = formatNumber(target) + '+';
+            const suffix = el.dataset.suffix || '+';
+            el.textContent = formatNumber(target) + suffix;
         }
     }
 
@@ -448,35 +449,30 @@ if (messageForm) {
             submitBtn.disabled = true;
 
             try {
-                const response = await fetch('/api/message', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: nameInput.value.trim(),
-                        email: emailInput.value.trim(),
-                        phone: phoneInput ? phoneInput.value.trim() : '',
-                        site_name: siteNameInput ? siteNameInput.value.trim() : '',
-                        site_url: siteUrlInput ? siteUrlInput.value.trim() : '',
-                        site_category: siteCatInput ? siteCatInput.value : '',
-                        message: messageInput ? messageInput.value.trim() : ''
-                    })
+                // Netlify Forms AJAX submission
+                const formData = new FormData(messageForm);
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString(),
                 });
 
-                const result = await response.json();
-
-                if (result.success) {
+                if (response.ok) {
                     messageSuccess.classList.add('show');
                     messageForm.reset();
 
                     setTimeout(() => {
-                        messageSuccess.classList.remove('show');
+                        messageSuccess.classList.add('hide');
+                        setTimeout(() => {
+                            messageSuccess.classList.remove('show', 'hide');
+                        }, 500);
                     }, 3500);
                 } else {
-                    alert('❌ ' + (result.errors ? result.errors.join('\n') : result.message));
+                    throw new Error('Netlify-ga yuborishda xatolik yuz berdi.');
                 }
             } catch (err) {
-                alert('❌ Serverga ulanib bo\'lmadi. Server ishga tushirilganligini tekshiring.\n\nnode server.js buyrug\'ini ishga tushiring.');
-                console.error('Message API xatolik:', err);
+                console.error('Submission error:', err);
+                alert('❌ Xabar yuborishda xatolik yuz berdi. Iltimos, keyinroq qayta urunib ko\'ring.');
             } finally {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;

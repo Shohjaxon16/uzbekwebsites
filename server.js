@@ -1,175 +1,94 @@
-/* ============================================================
-   TopUzbekSites — Backend Server (PostgreSQL)
-   ============================================================
-   Node.js + Express + PostgreSQL
-
-   API Endpoints:
-     POST /api/message   — Aloqa formasi (bog'lanish + sayt qo'shish)
-     GET  /api/messages  — Barcha xabarlarni ko'rish
-   ============================================================ */
-
 const express = require('express');
 const cors = require('cors');
-const { Pool } = require('pg');
+const path = require('path');
+require('dotenv').config();
+const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-
-/* ==========  POSTGRESQL ULANISH  ========== */
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'topuzbeksites',
-    password: '2010',
-    port: 5432
-});
-
-// Ulanishni tekshirish
-pool.query('SELECT NOW()')
-    .then(() => console.log('  ✅ PostgreSQL ga muvaffaqiyatli ulandi'))
-    .catch(err => {
-        console.error('  ❌ PostgreSQL ulanish xatoligi:', err.message);
-        process.exit(1);
-    });
-
-
-/* ==========  MIDDLEWARE  ========== */
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Statik fayllarni xizmat qilish
-app.use(express.static(__dirname));
+// Faqat kerakli static fayllarni ko'rsatish
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/image', express.static(path.join(__dirname, 'image')));
 
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/saytlar.html', (req, res) => res.sendFile(path.join(__dirname, 'saytlar.html')));
+app.get('/aloqa.html', (req, res) => res.sendFile(path.join(__dirname, 'aloqa.html')));
 
-/* ==========  YORDAMCHI FUNKSIYALAR  ========== */
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', time: new Date().toISOString() });
+});
 
-/**
- * Email formatini tekshirish
- */
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+// Supabase ulanishi
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+    console.error('❌ Supabase URL yoki Key topilmadi! .env faylni tekshiring.');
+} else {
+    console.log('🔗 Supabase-ga ulanishga urinish:', SUPABASE_URL);
 }
 
-/**
- * URL formatini tekshirish
- */
-function isValidUrl(url) {
-    return /^https?:\/\/.+\..+/.test(url);
-}
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-
-/* ==========  API ENDPOINTS  ========== */
-
-/**
- * POST /api/message
- * Birlashtirilgan forma — bog'lanish + sayt qo'shish
- * Body: { name, email, phone?, site_name?, site_url?, site_category?, message? }
- */
-app.post('/api/message', async (req, res) => {
+// Database test endpoint
+app.get('/api/test-db', async (req, res) => {
     try {
-        const { name, email, phone, site_name, site_url, site_category, message } = req.body;
+        const { data, error } = await supabase.from('contacts').select('*').limit(1);
+        if (error) throw error;
+        res.json({ success: true, message: 'Supabase bilan aloqa yaxshi!', data });
+    } catch (err) {
+        console.error('Test DB Error:', err);
+        res.status(500).json({ success: false, message: 'Supabase bilan aloqada xatolik', debug: err.message });
+    }
+});
 
-        // Validatsiya
-        const errors = [];
+// POST /api/message – xabarni Supabase-ga saqlash
+app.post('/api/message', async (req, res) => {
+    const { name, email, phone, site_name, site_url, site_category, message } = req.body;
 
-        if (!name || !name.trim()) {
-            errors.push('Ismingizni kiriting');
-        }
+    if (!name || !email) {
+        return res.status(400).json({ success: false, message: 'Ism va email kiritilishi shart' });
+    }
 
-        if (!email || !isValidEmail(email.trim())) {
-            errors.push("To'g'ri email manzil kiriting");
-        }
+    try {
+        console.log('📝 Saving message to Supabase...', { name, email });
 
-        // Agar sayt URL kiritilgan bo'lsa, tekshirish
-        if (site_url && site_url.trim() && !isValidUrl(site_url.trim())) {
-            errors.push("To'g'ri sayt URL kiriting (https://...)");
-        }
+        const { data, error } = await supabase
+            .from('contacts')
+            .insert([
+                {
+                    name,
+                    email,
+                    phone: phone || '',
+                    site_name: site_name || '',
+                    site_url: site_url || '',
+                    site_category: site_category || '',
+                    message: message || ''
+                }
+            ]);
 
-        if (errors.length > 0) {
-            return res.status(400).json({
+        if (error) {
+            console.error('Supabase Insert Error:', error);
+            return res.status(500).json({
                 success: false,
-                message: 'Validatsiya xatoligi',
-                errors
+                message: 'Bazaga yozishda xatolik',
+                debug: error.message,
+                details: error.details,
+                hint: error.hint
             });
         }
 
-        // PostgreSQL ga saqlash
-        const result = await pool.query(
-            `INSERT INTO messages (name, email, phone, site_name, site_url, site_category, message)
-             VALUES ($1, $2, $3, $4, $5, $6, $7)
-             RETURNING id, created_at`,
-            [
-                name.trim(),
-                email.trim(),
-                (phone || '').trim() || null,
-                (site_name || '').trim() || null,
-                (site_url || '').trim() || null,
-                (site_category || '').trim() || null,
-                (message || '').trim() || null
-            ]
-        );
-
-        const saved = result.rows[0];
-        console.log(`  📩 Yangi xabar #${saved.id}: ${name.trim()} (${email.trim()})`);
-
-        return res.status(201).json({
-            success: true,
-            message: "Xabaringiz muvaffaqiyatli yuborildi! Tez orada javob beramiz.",
-            data: { id: saved.id, created_at: saved.created_at }
-        });
-
+        res.status(201).json({ success: true, message: 'Xabar muvaffaqiyatli saqlandi' });
     } catch (err) {
-        console.error('  ❌ Xatolik:', err.message);
-        return res.status(500).json({
-            success: false,
-            message: "Serverda xatolik yuz berdi. Qaytadan urinib ko'ring."
-        });
+        console.error('Server Catch Error:', err);
+        res.status(500).json({ success: false, message: 'Serverda kutilmagan xatolik', debug: err.message });
     }
 });
 
-
-/**
- * GET /api/messages
- * Barcha xabarlarni ko'rish (pgAdmin dan ham ko'rish mumkin)
- */
-app.get('/api/messages', async (req, res) => {
-    try {
-        const result = await pool.query(
-            'SELECT * FROM messages ORDER BY created_at DESC'
-        );
-
-        res.json({
-            success: true,
-            count: result.rowCount,
-            data: result.rows
-        });
-    } catch (err) {
-        console.error('  ❌ Xatolik:', err.message);
-        res.status(500).json({
-            success: false,
-            message: "Ma'lumotlarni olishda xatolik"
-        });
-    }
-});
-
-
-/* ==========  SERVER ISHGA TUSHIRISH  ========== */
-app.listen(PORT, () => {
-    console.log('');
-    console.log('  ╔══════════════════════════════════════════════╗');
-    console.log('  ║                                              ║');
-    console.log(`  ║   🚀 TopUzbekSites Server (PostgreSQL)       ║`);
-    console.log(`  ║   📡 http://localhost:${PORT}                   ║`);
-    console.log('  ║                                              ║');
-    console.log('  ╚══════════════════════════════════════════════╝');
-    console.log('');
-    console.log('  API:');
-    console.log('  ├─ POST /api/message   — Xabar yuborish');
-    console.log('  └─ GET  /api/messages  — Xabarlar ro\'yxati');
-    console.log('');
-    console.log('  💡 pgAdmin da "topuzbekdb" bazasini oching');
-    console.log('     → Schemas → public → Tables → messages');
-    console.log('');
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Server http://localhost:${PORT}`));
