@@ -451,7 +451,7 @@ if (messageForm) {
             try {
                 // Netlify Forms AJAX submission
                 const formData = new FormData(messageForm);
-                const response = await fetch("/", {
+                const response = await fetch(window.location.href, {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: new URLSearchParams(formData).toString(),
