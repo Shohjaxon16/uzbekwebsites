@@ -32,17 +32,17 @@ const sitesData = [
         description: "O'zbekiston va dunyo yangiliklari. Online gazeta va axborot portali."
     },
     {
-        name: 'Zood Mall',
-        url: 'https://zoodmall.uz',
-        logo: 'https://www.google.com/s2/favicons?domain=zoodmall.uz&sz=128',
-        category: 'E-commerce',
-        description: "Onlayn xarid platformasi. Elektronika, kiyim va boshqa mahsulotlar."
+        name: 'Uzum Tezkor',
+        url: 'https://uzumtezkor.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=uzumtezkor.uz&sz=128',
+        category: 'Xizmatlar',
+        description: "Restoranlardan taomlar va do'konlardan oziq-ovqat yetkazib berish xizmati."
     },
     {
         name: 'Uzum Market',
         url: 'https://uzum.uz',
         logo: 'https://www.google.com/s2/favicons?domain=uzum.uz&sz=128',
-        category: 'E-commerce',
+        category: 'Onlayn savdo',
         description: "O'zbekistonning yetakchi marketplace platformasi. Millionlab mahsulotlar."
     },
     {
@@ -80,44 +80,169 @@ const sitesData = [
         category: "Ta'lim",
         description: "Dasturlash akademiyasi. Frontend, backend va mobil dasturlash kurslari."
     },
-    {
-        name: 'Anor.uz',
-        url: 'https://anor.uz',
-        logo: 'https://www.google.com/s2/favicons?domain=anor.uz&sz=128',
-        category: 'E-commerce',
-        description: "Elektronika va maishiy texnika onlayn do'koni. Sifatli mahsulotlar."
-    },
+
     {
         name: 'Championat.asia',
         url: 'https://championat.asia',
         logo: 'https://www.google.com/s2/favicons?domain=championat.asia&sz=128',
-        category: "Ko'ngilochar",
+        category: 'Sport',
         description: "Sport yangiliklari portali. Futbol, boks va boshqa sport turlari."
     },
+
     {
-        name: 'Dev.uz',
-        url: 'https://dev.uz',
-        logo: 'https://www.google.com/s2/favicons?domain=dev.uz&sz=128',
-        category: 'IT',
-        description: "O'zbek dasturchilari hamjamiyati. Texnologiya yangiliklari va forumlar."
+        name: 'Gazeta.uz',
+        url: 'https://gazeta.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=gazeta.uz&sz=128',
+        category: 'Yangiliklar',
+        description: "O'zbekistonning ishonchli va yirik nashrlaridan biri. Asosiy xabarlar va tahlillar."
     },
     {
-        name: 'Uzbfilm',
-        url: 'https://uzbfilm.uz',
-        logo: 'https://www.google.com/s2/favicons?domain=uzbfilm.uz&sz=128',
+        name: 'Birbir.uz',
+        url: 'https://birbir.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=birbir.uz&sz=128',
+        category: 'Onlayn savdo',
+        description: "O'zbekistonning mahalliy e'lonlar maydonchasi. Oldi-sotdi, xizmatlar va ijara."
+    },
+    {
+        name: 'Click.uz',
+        url: 'https://click.uz',
+        logo: 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://click.uz&size=128',
+        category: 'Moliya',
+        description: "O'zbekistondagi mashhur to'lov tizimi. Xizmatlar uchun onlayn to'lovlar va pul o'tkazmalari."
+    },
+    {
+        name: 'Payme.uz',
+        url: 'https://payme.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=payme.uz&sz=128',
+        category: 'Moliya',
+        description: "Mobil hamyon va to'lov xizmati. Qulay va xavfsiz moliyaviy operatsiyalar."
+    },
+    {
+        name: 'Asaxiy.uz',
+        url: 'https://asaxiy.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=asaxiy.uz&sz=128',
+        category: 'Onlayn savdo',
+        description: "Internet-do'kon va kitoblar savdosi. O'zbekiston bo'ylab tezkor yetkazib berish xizmati."
+    },
+    {
+        name: 'Uza.uz',
+        url: 'https://uza.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=uza.uz&sz=128',
+        category: 'Yangiliklar',
+        description: "O'zbekiston Milliy axborot agentligi. Rasmiy va ishonchli xabarlar."
+    },
+    {
+        name: 'Sports.uz',
+        url: 'https://sports.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=sports.uz&sz=128',
+        category: 'Sport',
+        description: "O'zbekistonning yetakchi sport yangiliklari va onlayn translyatsiya portali."
+    },
+    {
+        name: 'Stadion.uz',
+        url: 'https://stadion.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=stadion.uz&sz=128',
+        category: 'Sport',
+        description: "Futbol yangiliklari, maqolalar va o'yinlar natijalari bazasi."
+    },
+    {
+        name: 'Apteka.uz',
+        url: 'https://apteka.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=apteka.uz&sz=128',
+        category: 'Tibbiyot',
+        description: "O'zbekistondagi dorixonalar, dori vositalari narxlari va tibbiy ma'lumotnoma."
+    },
+    {
+        name: 'Med24.uz',
+        url: 'https://med24.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=med24.uz&sz=128',
+        category: 'Tibbiyot',
+        description: "Shifokorlar va klinikalarni izlash, tibbiyot yangiliklari."
+    },
+
+    {
+        name: 'RizaNova.uz',
+        url: 'https://rizanova.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=rizanova.uz&sz=128',
         category: "Ko'ngilochar",
-        description: "O'zbek filmlari onlayn kinoteater. Yangi va klassik filmlar."
+        description: "O'zbek estradasining eng yangi kliplari, musiqalari va filmlari."
     },
     {
-        name: 'Bilim.uz',
-        url: 'https://bilim.uz',
-        logo: 'https://www.google.com/s2/favicons?domain=bilim.uz&sz=128',
+        name: 'Tarona.net',
+        url: 'https://tarona.net',
+        logo: 'https://www.google.com/s2/favicons?domain=tarona.net&sz=128',
+        category: "Ko'ngilochar",
+        description: "Eng yangi o'zbek musiqalari va qo'shiqlari portali."
+    },
+
+    {
+        name: 'Afisha.uz',
+        url: 'https://afisha.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=afisha.uz&sz=128',
+        category: 'Afisha',
+        description: "Toshkent shahridagi madaniy va ko'ngilochar tadbirlar jadvali."
+    },
+    {
+        name: 'UzAirways',
+        url: 'https://uzairways.com',
+        logo: 'https://www.google.com/s2/favicons?domain=uzairways.com&sz=128',
+        category: 'Transport',
+        description: "O'zbekiston havo yo'llari. Aviachiptalar band qilish va xarid qilish."
+    },
+    {
+        name: 'UzRailway',
+        url: 'https://railway.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=railway.uz&sz=128',
+        category: 'Transport',
+        description: "O'zbekiston Temir Yo'llari. Poyezdlar jadvali va elektron chiptalar."
+    },
+
+    {
+        name: 'Kundalik.com',
+        url: 'https://kundalik.com',
+        logo: 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kundalik.com&size=128',
         category: "Ta'lim",
-        description: "Ta'lim portali. Oliy ta'lim muassasalari va o'quv dasturlari haqida."
+        description: "Maktablar uchun yagona raqamli ta'lim platformasi va elektron jurnal."
+    },
+    {
+        name: 'Yandex Go Uzbekistan',
+        url: 'https://taxi.yandex.uz/',
+        logo: 'https://www.google.com/s2/favicons?domain=taxi.yandex.uz&sz=128',
+        category: 'Xizmatlar',
+        description: "O'zbekistondagi eng ommabop taksi va yetkazib berish xizmati."
+    },
+    {
+        name: 'Express24',
+        url: 'https://express24.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=express24.uz&sz=128',
+        category: 'Xizmatlar',
+        description: "Oziq-ovqat va restoranlardan tezkorm yetkazib berish servisi."
+    },
+
+    {
+        name: 'ZiyoNET',
+        url: 'https://ziyonet.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=ziyonet.uz&sz=128',
+        category: "Ta'lim",
+        description: "Poydevor va o'quv-ta'lim tarmoqlari bo'yicha eng katta portal."
+    },
+    {
+        name: 'Oliy Majlis',
+        url: 'https://parliament.gov.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=parliament.gov.uz&sz=128',
+        category: 'Davlat',
+        description: "O'zbekiston Respublikasi Oliy Majlisi Qonunchilik palatasi rasmiy veb-sayti."
+    },
+    {
+        name: 'Mening Fikrim',
+        url: 'https://meningfikrim.uz',
+        logo: 'https://www.google.com/s2/favicons?domain=meningfikrim.uz&sz=128',
+        category: 'Davlat',
+        description: "Jamoaviy murojaatlar portali. Xalq fikrini o'rganish platformasi."
     },
     {
         name: 'TopUzbekSites',
-        url: 'https://peaceful-banoffee-e0d067.netlify.app',
+        url: 'index.html',
         logo: 'image/logo.png',
         category: 'IT',
         description: "O'zbekistonning eng yaxshi veb-saytlarini topish va kataloglash platformasi."
@@ -357,8 +482,32 @@ if (filterPills) {
         const pill = e.target.closest('.filter-pill');
         if (!pill) return;
 
+        // Toggle button bosilganda
+        if (pill.id === 'toggleCategoriesBtn') {
+            const isShowing = filterPills.classList.contains('show-all');
+            if (isShowing) {
+                filterPills.classList.remove('show-all');
+                pill.innerHTML = 'Davomini ko\'rish ▼';
+
+                // Agar yashiringan kategoriya active bo'lsa va biz yashirsak, 'all' ni aktiv qilamiz
+                const activeCategoryName = filterPills.querySelector('.filter-pill.active')?.dataset.category;
+                const hiddenCategories = Array.from(filterPills.querySelectorAll('.hidden-category')).map(p => p.dataset.category);
+
+                if (hiddenCategories.includes(activeCategoryName)) {
+                    filterPills.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    filterPills.querySelector('[data-category="all"]').classList.add('active');
+                    activeCategory = 'all';
+                    renderSites();
+                }
+            } else {
+                filterPills.classList.add('show-all');
+                pill.innerHTML = 'Yashirish ▲';
+            }
+            return;
+        }
+
         // Active holatni yangilash
-        filterPills.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        filterPills.querySelectorAll('.filter-pill:not(#toggleCategoriesBtn)').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
 
         activeCategory = pill.dataset.category;

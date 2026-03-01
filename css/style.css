@@ -854,6 +854,14 @@ img {
     margin-bottom: var(--space-2xl);
 }
 
+.hidden-category {
+    display: none;
+}
+
+.filter-pills.show-all .hidden-category {
+    display: block;
+}
+
 .filter-pill {
     padding: 10px 22px;
     background: rgba(255, 255, 255, 0.06);
@@ -876,6 +884,16 @@ img {
     border-color: rgba(162, 155, 254, 0.35);
     color: #fff;
     box-shadow: 0 4px 20px rgba(108, 92, 231, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.toggle-categories-btn {
+    background: transparent;
+    border: 1px dashed var(--glass-border-strong);
+}
+
+.toggle-categories-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-style: solid;
 }
 
 /* ==========  SITE CARDS GRID  ========== */
