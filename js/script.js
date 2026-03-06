@@ -241,7 +241,7 @@ const sitesData = [
         description: "Jamoaviy murojaatlar portali. Xalq fikrini o'rganish platformasi."
     },
     {
-        name: 'TopUzbekSites',
+        name: 'TopUzbekWebsites',
         url: 'index.html',
         logo: 'image/logo.png',
         category: 'IT',
